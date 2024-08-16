@@ -10,7 +10,9 @@ Miiui is a lightweight, efficient Immediate Mode GUI (IMGUI) made for love2d fra
 -  Responsive Layouts**: Automatically adjusts to different screen sizes
 
 ## Showcase
-![Miiui Showcase](repo/showcase.mp4)
+https://github.com/user-attachments/assets/7bf4434a-3891-4380-83bb-92dd920b27cf
+
+
 
 
 
