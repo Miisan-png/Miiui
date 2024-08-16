@@ -4,10 +4,15 @@ Miiui is a lightweight, efficient Immediate Mode GUI (IMGUI) made for love2d fra
 
 ## Features
 
-- ** Immediate Mode GUI**: Create efficient GUIs without complex state management
-- ** Customizable Themes**: Easily adjust colors and sizes to match your game's aesthetic
-- ** Animated Transitions**: Add smooth animations to enhance user experience
-- ** Responsive Layouts**: Automatically adjusts to different screen sizes
+-  Immediate Mode GUI**: Create efficient GUIs without complex state management
+-  Customizable Themes**: Easily adjust colors and sizes to match your game's aesthetic
+-  Animated Transitions**: Add smooth animations to enhance user experience
+-  Responsive Layouts**: Automatically adjusts to different screen sizes
+
+## Showcase
+![Miiui Showcase](repo/showcase.mp4)
+
+
 
 ## Installation
 
@@ -55,10 +60,6 @@ function love.textinput(text)
     Miiui.textinput(text)
 end
 ```
-
-## Showcase
-
-![Miiui Showcase](repo/showcase.mp4)
 
 
 
