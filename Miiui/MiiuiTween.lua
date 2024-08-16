@@ -9,7 +9,6 @@ local easing = {
     quadInOut = function(t)
         if t < 0.5 then return 2 * t * t else return 1 - (-2 * t + 2)^2 / 2 end
     end,
-    -- Add more easing functions as needed
 }
 
 local function lerp(a, b, t)
