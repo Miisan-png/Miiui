@@ -229,5 +229,4 @@ function MiiuiWidgets.dropdown(x, y, w, options, selectedIndex)
     
     return selectedIndex, changed
 end
-
 return MiiuiWidgets

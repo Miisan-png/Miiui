@@ -82,6 +82,10 @@ function MiiuiCore.isDoubleClick()
     return isDouble
 end
 
+function MiiuiCore.textinput(text)
+    MiiuiCore.state.keyboardInput = MiiuiCore.state.keyboardInput .. text
+end
+
 function MiiuiCore.keypressed(key)
     MiiuiCore.state.keyStates[key] = true
 end
