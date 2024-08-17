@@ -26,12 +26,14 @@ Miiui.tween = {
 }
 
 -- Expose widget functions
+Miiui.keypressed = MiiuiCore.keypressed
+Miiui.keyreleased = MiiuiCore.keyreleased
+Miiui.textinput = MiiuiCore.textinput
 Miiui.panel = MiiuiWidgets.panel
 Miiui.button = MiiuiWidgets.button
 Miiui.slider = MiiuiWidgets.slider
 Miiui.checkbox = MiiuiWidgets.checkbox
 Miiui.label = MiiuiWidgets.label
-Miiui.textInput = MiiuiWidgets.textInput  -- Add this line
-Miiui.dropdown = MiiuiWidgets.dropdown
+Miiui.textInput = MiiuiWidgets.textInput  
 
 return Miiui
