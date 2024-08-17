@@ -35,6 +35,5 @@ Miiui.slider = MiiuiWidgets.slider
 Miiui.checkbox = MiiuiWidgets.checkbox
 Miiui.label = MiiuiWidgets.label
 Miiui.textInput = MiiuiWidgets.textInput  
-Miiui.dropdown = MiiuiWidgets.dropdown
 
 return Miiui

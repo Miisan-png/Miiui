@@ -191,42 +191,4 @@ function MiiuiWidgets.textInput(x, y, w, h, value, placeholder)
     return value, changed
 end
 
-function MiiuiWidgets.dropdown(x, y, w, options, selectedIndex)
-    local itemId = "dropdown" .. x .. y
-    local changed = false
-    local isOpen = Core.state.activeItem == itemId
-    
-    local mx, my = Core.state.mouseX - Core.state.currentPanel.x, Core.state.mouseY - Core.state.currentPanel.y
-    
-    if Utils.pointInRect(mx, my, x, y, w, Theme.sizes.dropdownHeight) and Core.state.mousePressed then
-        if isOpen then
-            Core.state.activeItem = nil
-        else
-            Core.state.activeItem = itemId
-        end
-    end
-    
-    love.graphics.setColor(Theme.colors.dropdown)
-    love.graphics.rectangle("fill", x, y, w, Theme.sizes.dropdownHeight)
-    love.graphics.setColor(Theme.colors.text)
-    love.graphics.printf(options[selectedIndex], x + 5, y + 5, w - 10, "left")
-    
-    if isOpen then
-        for i, option in ipairs(options) do
-            local optionY = y + Theme.sizes.dropdownHeight * i
-            love.graphics.setColor(Theme.colors.dropdownOption)
-            love.graphics.rectangle("fill", x, optionY, w, Theme.sizes.dropdownHeight)
-            love.graphics.setColor(Theme.colors.text)
-            love.graphics.printf(option, x + 5, optionY + 5, w - 10, "left")
-            
-            if Utils.pointInRect(mx, my, x, optionY, w, Theme.sizes.dropdownHeight) and Core.state.mousePressed then
-                selectedIndex = i
-                changed = true
-                Core.state.activeItem = nil
-            end
-        end
-    end
-    
-    return selectedIndex, changed
-end
 return MiiuiWidgets

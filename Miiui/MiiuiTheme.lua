@@ -14,8 +14,6 @@ local MiiuiTheme = {
         text = {1, 1, 1},
         textInput = {0.2, 0.2, 0.2},
         textInputFocus = {0.8, 0.8, 1},
-        dropdown = {0.3, 0.3, 0.5},
-        dropdownOption = {0.4, 0.4, 0.6},
     },
     sizes = {
         buttonRadius = 5,
@@ -25,7 +23,6 @@ local MiiuiTheme = {
         checkboxSize = 20,
         checkboxRadius = 3,
         textInputRadius = 3,
-        dropdownHeight = 30,
     }
 }
 
