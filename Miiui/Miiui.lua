@@ -1,3 +1,4 @@
+-- Miiui.lua
 local MiiuiCore = require "MiiuiCore"
 local MiiuiWidgets = require "MiiuiWidgets"
 local MiiuiUtils = require "MiiuiUtils"
@@ -35,5 +36,6 @@ Miiui.slider = MiiuiWidgets.slider
 Miiui.checkbox = MiiuiWidgets.checkbox
 Miiui.label = MiiuiWidgets.label
 Miiui.textInput = MiiuiWidgets.textInput  
+Miiui.progressBar = MiiuiWidgets.progressBar
 
 return Miiui

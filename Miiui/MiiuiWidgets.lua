@@ -31,6 +31,62 @@ function MiiuiWidgets.panel(x, y, w, h, content)
     love.graphics.pop()
 end
 
+function MiiuiWidgets.progressBar(x, y, w, h, value, options)
+    options = options or {}
+    local min = options.min or 0
+    local max = options.max or 1
+    local color = options.color or {0.2, 0.7, 0.2}
+    local backgroundColor = options.backgroundColor or {0.2, 0.2, 0.2}
+    local borderColor = options.borderColor or {0.5, 0.5, 0.5}
+    local showPercentage = options.showPercentage or false
+    local vertical = options.vertical or false
+    local interactive = options.interactive or false
+
+    value = math.max(min, math.min(max, value))
+
+    local fillAmount = (value - min) / (max - min)
+
+    if interactive then
+        local mx, my = Core.state.mouseX - Core.state.currentPanel.x, Core.state.mouseY - Core.state.currentPanel.y
+        if Utils.pointInRect(mx, my, x, y, w, h) then
+            if Core.state.mousePressed then
+                local newFillAmount
+                if vertical then
+                    newFillAmount = 1 - (my - y) / h
+                else
+                    newFillAmount = (mx - x) / w
+                end
+                value = min + newFillAmount * (max - min)
+                value = math.max(min, math.min(max, value))
+            end
+        end
+    end
+
+    love.graphics.setColor(backgroundColor)
+    love.graphics.rectangle("fill", x, y, w, h)
+
+    love.graphics.setColor(color)
+    if vertical then
+        local fillHeight = h * fillAmount
+        love.graphics.rectangle("fill", x, y + h - fillHeight, w, fillHeight)
+    else
+        local fillWidth = w * fillAmount
+        love.graphics.rectangle("fill", x, y, fillWidth, h)
+    end
+
+    love.graphics.setColor(borderColor)
+    love.graphics.rectangle("line", x, y, w, h)
+
+    if showPercentage then
+        love.graphics.setColor(1, 1, 1)
+        local percentage = math.floor(fillAmount * 100)
+        love.graphics.printf(percentage .. "%", x, y + h/2 - 7, w, "center")
+    end
+
+    return value
+end
+
+
 function MiiuiWidgets.button(x, y, w, h, text)
     local itemId = "button" .. x .. y
     local clicked = false
