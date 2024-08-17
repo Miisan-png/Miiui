@@ -7,7 +7,10 @@ local state = {
     checkboxValue = false,
     textInputValue = "",
     colorPreview = {1, 0, 0},
-    counter = 0
+    counter = 0,
+    health = 75,
+    mana = 60,
+    experiencePoints = 340
 }
 
 function love.load()
@@ -36,29 +39,39 @@ function love.draw()
             end
         end
 
-        -- Slider
-        Miiui.label(50, 110, "Adjust Color:")
-        state.sliderValue = Miiui.slider(50, 140, 200, state.sliderValue, 0, 100)
-        Miiui.label(50, 170, "Value: " .. math.floor(state.sliderValue))
+        -- Interactive Health Progress Bar
+        Miiui.label(50, 110, "Health:")
+        state.health = Miiui.progressBar(50, 130, 200, 30, state.health, {
+            min = 0,
+            max = 100,
+            color = {0.8, 0.2, 0.2},
+            showPercentage = true,
+            interactive = true
+        })
 
-        -- Color preview based on slider
-        state.colorPreview = {state.sliderValue / 100, 0, 1 - state.sliderValue / 100}
-        love.graphics.setColor(state.colorPreview)
-        love.graphics.rectangle("fill", 50, 200, 200, 40)
+        -- Interactive Mana Progress Bar
+        Miiui.label(50, 180, "Mana:")
+        state.mana = Miiui.progressBar(50, 200, 200, 30, state.mana, {
+            min = 0,
+            max = 100,
+            color = {0.2, 0.2, 0.8},
+            showPercentage = true,
+            interactive = true
+        })
 
         -- Checkbox
-        state.checkboxValue = Miiui.checkbox(50, 260, state.checkboxValue, "Enable Feature")
+        state.checkboxValue = Miiui.checkbox(50, 250, state.checkboxValue, "Enable Feature")
 
         -- Text input
-        Miiui.label(50, 300, "Enter your name:")
-        state.textInputValue = Miiui.textInput(50, 330, 200, 30, state.textInputValue, "Type here...")
+        Miiui.label(50, 290, "Enter your name:")
+        state.textInputValue = Miiui.textInput(50, 320, 200, 30, state.textInputValue, "Type here...")
 
         -- Counter
-        Miiui.label(50, 380, "Counter: " .. state.counter)
-        if Miiui.button(50, 410, 90, 40, "-") then
+        Miiui.label(50, 370, "Counter: " .. state.counter)
+        if Miiui.button(50, 400, 90, 40, "-") then
             state.counter = state.counter - 1
         end
-        if Miiui.button(160, 410, 90, 40, "+") then
+        if Miiui.button(160, 400, 90, 40, "+") then
             state.counter = state.counter + 1
         end
     end)
@@ -73,15 +86,22 @@ function love.draw()
             Miiui.label(20, 60, "This panel is animated!")
             
             -- Display state values
-            Miiui.label(20, 100, "Slider: " .. math.floor(state.sliderValue))
-            Miiui.label(20, 130, "Checkbox: " .. tostring(state.checkboxValue))
-            Miiui.label(20, 160, "Text: " .. state.textInputValue)
-            Miiui.label(20, 190, "Counter: " .. state.counter)
+            Miiui.label(20, 100, "Health: " .. math.floor(state.health))
+            Miiui.label(20, 130, "Mana: " .. math.floor(state.mana))
+            Miiui.label(20, 160, "Checkbox: " .. tostring(state.checkboxValue))
+            Miiui.label(20, 190, "Text: " .. state.textInputValue)
+            Miiui.label(20, 220, "Counter: " .. state.counter)
 
-            -- Color display
-            love.graphics.setColor(state.colorPreview)
-            love.graphics.rectangle("fill", 20, 220, 190, 40)
-            Miiui.label(20, 270, "Current Color")
+            -- Interactive vertical progress bar for XP
+            Miiui.label(20, 260, "XP:")
+            state.experiencePoints = Miiui.progressBar(20, 290, 30, 200, state.experiencePoints, {
+                min = 0,
+                max = 1000,
+                color = {0.2, 0.8, 0.2},
+                vertical = true,
+                showPercentage = true,
+                interactive = true
+            })
         end)
         love.graphics.pop()
     end
